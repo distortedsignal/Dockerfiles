@@ -1,0 +1,19 @@
+#! /bin/sh
+
+if [ -z "$DocsPath" ]; then
+    echo "DocsPath variable was empty -"
+    echo "Must have an DocsPath set to scan raml files"
+    exit 2
+fi
+
+echo "Running raml-cop on all *.raml documents in directory: $DocsPath"
+
+for MaybeRamlFile in "$DocsPath"/* ; do
+    case $MaybeRamlFile in
+        *.raml)
+            if ! raml-cop "$MaybeRamlFile"; then
+                exit 1
+            fi;;
+        **) true;;
+    esac
+done
