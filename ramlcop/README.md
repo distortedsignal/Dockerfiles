@@ -10,7 +10,7 @@ Periodically, npm may need to be updated in the Dockerfile.
 
 ## Runtime Concerns
 
-This container requires a volume mount. The volume can be mounted to any available location in the container. The volume _MUST_ container _ALL FILES_ required to confirm that the RAML is well-formed.
+This container requires a volume mount. The volume can be mounted to any available location in the container. The volume _MUST_ contain _ALL FILES_ required to confirm that the RAML is well-formed.
 
 This container also requires that, at runtime, the user specify where the RAML files are located. It is assumed that all RAML files are located in the same folder. The environment variable is expected to be `DocsPath`. If the container is started when `DocsPath` is not set, the container will exit with code `2`.
 
