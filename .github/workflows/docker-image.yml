@@ -8,12 +8,9 @@ on:
       - '**/README.md'
       # Don't worry about license changes - they won't break anything
       - '**/*license*'
+      - '**/*LICENSE*'
       # Notch this file in particular
       - 'jupyterhub-samlauthenticator/jupyterhub_config.py'
-    paths:
-      - 'jupyterhub-samlauthenticator/**'
-      - 'ramlcop/**'
-      - '.github/workflows/**'
     
 
 jobs:
