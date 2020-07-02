@@ -1,0 +1,26 @@
+name: Build ramlcop Image
+
+on:
+  pull_request:
+    branches: [ master ]
+    paths:
+      # All files critical to the ramlcop image
+      - 'ramlcop/Dockerfile'
+      - 'ramlcop/ramlize'
+      # And this file, for good measure
+      - '.github/workflows/ramlcop-build.yml'
+  schedule:
+    # Run at 00:00 UTC on the first day of every month
+    - cron: '0 0 1 * *'
+    
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the ramlcop image
+      run: docker build ramlcop
