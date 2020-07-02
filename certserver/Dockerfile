@@ -6,7 +6,7 @@ COPY minica/minica /usr/local/sbin
 COPY index.html /tmp/index.html
 COPY server.py /tmp/server.py
 
-ENV FLASK_APP="/tmp/server.py"
+
 
 CMD pip install flask gunicorn
 
