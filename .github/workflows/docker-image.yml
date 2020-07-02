@@ -11,6 +11,9 @@ on:
       - '**/*LICENSE*'
       # Notch this file in particular
       - 'jupyterhub-samlauthenticator/jupyterhub_config.py'
+  schedule:
+    # Run at 00:00 UTC on the first day of every month
+    - cron: '0 0 1 * *'
     
 
 jobs:
