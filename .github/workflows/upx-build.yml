@@ -1,0 +1,25 @@
+name: Build UPX Image
+
+on:
+  pull_request:
+    branches: [ master ]
+    paths:
+      # All files critical to the UPX image
+      - 'upx/Dockerfile'
+      # And this file, for good measure
+      - '.github/workflows/upx-build.yml'
+  schedule:
+    # Run at 00:00 UTC on the first day of every month
+    - cron: '0 0 1 * *'
+    
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the UPX image
+      run: docker build upx
