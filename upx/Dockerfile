@@ -21,10 +21,8 @@ RUN echo "installing dependencies" && \
     git -C /upx fetch --all --tags && \
     echo "checkout tag for 3.96" && \
     git -C /upx checkout tags/v3.96 -b v3.96 && \
-    echo "updating makefile" && \
-    sed -i 's/ -O2/ /' /upx/src/Makefile && \
     echo "running make" && \
-    make -j10 -C /upx/src upx.out CHECK_WHITESPACE= && \
+    make -j -C /upx/src upx.out CHECK_WHITESPACE= && \
     echo "compress upx binary" && \
     /upx/src/upx.out \
         --lzma \
@@ -36,5 +34,7 @@ RUN echo "installing dependencies" && \
 FROM busybox
 
 COPY --from=builder /usr/bin/upx /usr/bin/upx
+COPY --from=builder /upx/COPYING /COPYING
+COPY --from=builder /upx/LICENSE /LICENSE
 
 ENTRYPOINT ["/usr/bin/upx"]
