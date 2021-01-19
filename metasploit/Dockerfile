@@ -11,8 +11,9 @@ RUN mkdir /workspace && \
     chmod 755 msfinstall && \
     ./msfinstall
 
-RUN adduser --disabled-password --gecos "Metasploit DB User" msfdb
+RUN adduser --home "/home/msfdb" --disabled-password --gecos "Metasploit DB User" msfdb
 USER msfdb
+WORKDIR /home/msfdb
 RUN msfdb init --use-defaults
 
 EXPOSE 5443
