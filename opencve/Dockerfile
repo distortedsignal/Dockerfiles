@@ -16,7 +16,7 @@ RUN mkdir -p /run/postgresql /home/postgres && \
         chown -R postgres:postgres /run/postgresql && \
         chmod a+x /run/entrypoint/entrypoint.sh
 
-EXPOSE 8000/tcp
-EXPOSE 8000/udp
+EXPOSE 9000/tcp
+EXPOSE 9000/udp
 
 ENTRYPOINT [ "/run/entrypoint/entrypoint.sh" ]
