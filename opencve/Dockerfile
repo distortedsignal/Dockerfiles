@@ -11,13 +11,9 @@ RUN apk add postgresql postgresql-contrib redis python3 py3-pip postgresql-libs 
         ln -sf python3 /usr/bin/python
 
 ADD entrypoint.sh /run/entrypoint/entrypoint.sh
-RUN adduser -D -h /home/opencve opencve opencve && \
-        mkdir -p /run/postgresql /home/postgres /home/redis /home/opencve && \
+RUN mkdir -p /run/postgresql /home/postgres && \
         chown -R postgres:postgres /home/postgres && \
-        chown -R redis:redis /home/redis && \
-        chown -R opencve:opencve /home/opencve && \
         chown -R postgres:postgres /run/postgresql && \
-        chown -R redis:redis /run/redis && \
         chmod a+x /run/entrypoint/entrypoint.sh
 
 EXPOSE 8000/tcp

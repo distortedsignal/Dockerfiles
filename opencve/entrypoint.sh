@@ -5,8 +5,6 @@ function make_run_as_cmd() {
 }
 
 RUN_AS_PG=$(make_run_as_cmd "postgres")
-RUN_AS_REDIS=$(make_run_as_cmd "redis")
-RUN_AS_OPENCVE=$(make_run_as_cmd "opencve")
 
 OPENCVE_CFG_LOCATION="/var/lib/postgresql/opencve/opencve.cfg"
 
