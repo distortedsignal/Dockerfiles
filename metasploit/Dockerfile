@@ -1,7 +1,7 @@
 FROM archlinux:latest
 
 RUN pacman -Sy
-RUN pacman -S --noconfirm postgresql metasploit
+RUN pacman -S --noconfirm postgresql metasploit nmap
 
 RUN useradd --create-home --home-dir "/home/msfdb" --comment "Metasploit DB User" msfdb
 WORKDIR /home/msfdb
