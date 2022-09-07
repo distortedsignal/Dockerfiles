@@ -1,0 +1,4 @@
+#!/bin/bash
+
+msfdb start --component database ;
+msfconsole

@@ -1,22 +1,15 @@
-FROM ubuntu:latest
+FROM archlinux:latest
 
-RUN apt -y update && \
-    apt -y upgrade && \
-    DEBIAN_FRONTEND=noninteractive apt -y install curl gnupg gnupg2 gnupg1 nmap postgresql
+RUN pacman -Sy
+RUN pacman -S --noconfirm postgresql metasploit
 
-RUN mkdir /workspace && \
-    cd /workspace && \
-    # This line pulled from metasploit docs here: https://docs.rapid7.com/metasploit/installing-the-metasploit-framework/
-    curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
-    chmod 755 msfinstall && \
-    ./msfinstall
-
-RUN adduser --home "/home/msfdb" --disabled-password --gecos "Metasploit DB User" msfdb
-USER msfdb
+RUN useradd --create-home --home-dir "/home/msfdb" --comment "Metasploit DB User" msfdb
 WORKDIR /home/msfdb
-RUN msfdb init --use-defaults
+COPY ./startscript startscript
+RUN chown msfdb:msfdb ./startscript && chmod 700 ./startscript
 
-EXPOSE 5443
+USER msfdb
+RUN msfdb init --component database --use-defaults
 
-ENTRYPOINT ["msfconsole"]
+ENTRYPOINT ["./startscript"]
 
