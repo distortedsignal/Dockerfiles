@@ -10,6 +10,7 @@ RUN chown msfdb:msfdb ./startscript && chmod 700 ./startscript
 
 USER msfdb
 RUN msfdb init --component database --use-defaults
+RUN msfdb init --component webservice --use-defaults --user admin --pass admin
 
 ENTRYPOINT ["./startscript"]
 
