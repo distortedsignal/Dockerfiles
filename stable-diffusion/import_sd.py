@@ -23,3 +23,12 @@ def set_pipe_to_cuda_slow():
     global pipe
     pipe = pipe.to("cuda")
     pipe.enable_attention_slicing()
+
+def set_pipe_to_cpu():
+    global pipe
+    pipe = pipe.to("cpu")
+
+def set_pipe_to_cpu_slow():
+    global pipe
+    pipe = pipe.to("cpu")
+    pipe.enable_attention_slicing()
