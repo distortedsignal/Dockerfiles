@@ -37,7 +37,7 @@ msf6 >
 
 ```sh
 msf6 > # Add hosts and host services to the database via db_nmap
-msf6 > db_nmap -v -p 1-60000 -sU -sT -A ${list-of-ip-addresses}
+msf6 > db_nmap -v -p U:1-65535,T:1-65535 -A ${list-of-ip-addresses}
 ...
 ```
 
