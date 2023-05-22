@@ -36,8 +36,11 @@ msf6 >
 ### Step 4: Try It Out
 
 ```sh
-msf6 > # Add hosts and host services to the database via db_nmap
-msf6 > db_nmap -v -p U:1-65535,T:1-65535 -A ${list-of-ip-addresses}
+msf6 > # Add hosts to the database via db_nmap
+msf6 > db_nmap -v -sn --host-timeout 1s -A ${list-of-ip-addresses}
+...
+msf6 > # Scan all TCP ports
+msf6 > db_nmap -v -p T:1-65535 -A ${list-of-ip-addresses}
 ...
 ```
 
