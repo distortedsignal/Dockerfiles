@@ -1,9 +1,9 @@
 # Dockerfile for a RAML-cop container
 
 # Latest alpine at time of development
-FROM alpine:3.11.2
+FROM alpine:3.18
 
-RUN apk add --no-cache npm=12.15.0-r1
+RUN apk add --no-cache npm
 
 RUN npm install --global raml-cop@5.0.0
 
